@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def home
-    @messages = Message.all
+    @messages = Message.last(5)
     @message = Message.new
   end
 end
