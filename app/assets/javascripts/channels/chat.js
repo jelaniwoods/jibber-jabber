@@ -1,6 +1,7 @@
 App.chat = App.cable.subscriptions.create("ChatChannel", {
   connected: function() {
     // Called when the subscription is ready for use on the server
+
   },
 
   disconnected: function() {
@@ -9,5 +10,8 @@ App.chat = App.cable.subscriptions.create("ChatChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
+    let messages = $("#chatbox");
+    messages.append(data["message"]);
+    messages.scrollTop(messages[0].scrollHeight);
   }
 });
