@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -24,6 +26,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def username
-      return email.split("@").first.capitalize
+    email.split('@').first.capitalize
   end
 end
