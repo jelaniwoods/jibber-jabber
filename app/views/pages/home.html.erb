@@ -3,16 +3,16 @@
 </h1>
 <div class="well" id="chatbox" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
   <% @messages.each do |message| %>
-    <%= render "mesages/message", message: message %>
+    <%= render "messages/message", message: message %>
   <% end %>
 
-  <%= form_with model: @message do |f| %>
-    <div class="input-group mb-3">
-      <%= f.text_field :body, placeholder: "Say something...", class: "form-control" %>
-      <div class="input-group-append">
-        <%= f.submit "Send", class: "btn btn-secondary" %>
-      </div>
+  <%= form_for Message.new, remote: true do |f| %>
 
-    </div>
+  <div class="input-group">
+  	<%= f.text_field  :body, as: :string, placeholder: "Enter message...", class:'form-control', label: false, wrapper: false, autocomplete:'off' %>
+  	<div class="input-group-append">
+  		<%= f.submit "Send Message", class: 'btn btn-outline-secondary' %>
+  	</div>
+  </div>
   <% end %>
 </div>
