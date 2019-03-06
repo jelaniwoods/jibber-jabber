@@ -1,17 +1,24 @@
-<h1 style="text-align:center">
-  JibberJabber
-</h1>
-<div class="well" id="chatbox" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
-  <% @messages.each do |message| %>
+<div class="jumbotron">
+  <h1 style="text-align:center">
+    JibberJabber
+  </h1>
+  <div class="well" id="chatbox" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
+    <% @messages.each do |message| %>
     <%= render "messages/message", message: message %>
-  <% end %>
-
-  <%= form_for Message.new, remote: true do |f| %>
+    <% end %>
+    <% if current_user %>
+    <%= form_for Message.new, remote: true do |f| %>
     <div class="input-group">
-    	<%= f.text_field  :body, as: :string, placeholder: "Enter message...", class:'form-control', label: false, wrapper: false, autocomplete:'off' %>
-    	<div class="input-group-append">
-    		<%= f.submit "Send Message", class: 'btn btn-outline-secondary' %>
-    	</div>
+      <%= f.text_field  :body, as: :string, placeholder: "Enter message...", class:'form-control', label: false, wrapper: false, autocomplete:'off' %>
+      <div class="input-group-append">
+        <%= f.submit "Send Message", class: 'btn btn-outline-secondary' %>
+      </div>
     </div>
-  <% end %>
+    <% end %>
+    <% else %>
+      <p class="text-align:center">
+        You need to be <%= link_to "Signed In", new_user_session_path %> in order to chat!
+      </p>
+    <% end %>
+  </div>
 </div>
