@@ -13,6 +13,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem "devise"
+gem "better_errors"
+gem "binding_of_caller"
 gem "bootstrap"
 gem "jquery-rails"
 gem "popper_js"
