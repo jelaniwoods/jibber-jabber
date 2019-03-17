@@ -1,25 +1,20 @@
-<div class="jumbotron">
-  <h1 style="text-align:center">
-    JibberJabber
-  </h1>
-  <div class="well" id="messages" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
-    <% @messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-      <hr>
-    <% end %>
-    <% if current_user %>
-      <%= form_for Message.new, remote: true do |f| %>
-      <div class="input-group">
-        <%= f.text_field  :body, as: :string, placeholder: "Enter message...", class:'form-control', label: false, wrapper: false, autocomplete:'off' %>
-        <div class="input-group-append">
-          <%= f.submit "Send Message", class: 'btn btn-outline-secondary' %>
-        </div>
-      </div>
-      <% end %>
-    <% else %>
-      <p class="text-align:center">
-        You need to be <%= link_to "Signed In", new_user_session_path %> in order to chat!
-      </p>
-    <% end %>
-  </div>
+<div class="row">
+
+	<div class="col-lg-8 col-md-8 col-sm-12">
+		<div class="jumbotron">
+      <h1 style="text-align:center">
+        JibberJabber
+      </h1>
+			<p style="text-align:center">
+				<%= render 'layouts/session_links' %>
+			</p>
+			<hr>
+			<% if current_user %>
+			<div class="well">
+				<%= javascript_include_tag asset_path 'pages.js' %>
+				<%= render 'layouts/chatbox' %>
+			</div>
+			<% end %>
+		</div>
+	</div>
 </div>
