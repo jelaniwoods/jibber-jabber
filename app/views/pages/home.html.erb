@@ -2,7 +2,7 @@
   <h1 style="text-align:center">
     JibberJabber
   </h1>
-  <div class="well" id="chatbox" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
+  <div class="well" id="messages" style="height:250px; border: solid 1px #222; overflow-y: scroll;">
     <% @messages.each do |message| %>
       <%= render "messages/message", message: message %>
       <hr>
